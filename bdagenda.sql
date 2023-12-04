@@ -1,24 +1,24 @@
-CREATE TABLE Cliente (
-    cpf_cliente VARCHAR(11) PRIMARY KEY,
-    nome_cliente VARCHAR(100) NOT NULL,
-    telefone_cliente VARCHAR(15) NOT NULL
+CREATE TABLE Cliente ( --tabela criada para armazenar informações do cliente
+    cpf_cliente VARCHAR(11) PRIMARY KEY, --chave primária
+    nome_cliente VARCHAR(100) NOT NULL, --nome cliente
+    telefone_cliente VARCHAR(15) NOT NULL --num cliente
 );
 
-CREATE TABLE Profissional (
-    cpf_profissional VARCHAR(11) PRIMARY KEY,
-    nome_profissional VARCHAR(100) NOT NULL
+CREATE TABLE Profissional ( --tabela para armazenar informações sobre profissal 
+    cpf_profissional VARCHAR(11) PRIMARY KEY, --chave primária
+    nome_profissional VARCHAR(100) NOT NULL --nome profissional
 );
 
-CREATE TABLE Procedimento (
-    id_procedimento INT PRIMARY KEY,
-    nome_procedimento VARCHAR(100) NOT NULL
+CREATE TABLE Procedimento ( --tabela usada para armazenar informações sobre procedimento
+    id_procedimento INT PRIMARY KEY, --chave primaria 
+    nome_procedimento VARCHAR(100) NOT NULL --nome procedimento
 );
 
-CREATE TABLE Agendamento (
-    horario_agendamento TIME NOT NULL,
-    cpf_cliente VARCHAR(11) REFERENCES Cliente(cpf_cliente),
-    cpf_profissional VARCHAR(11) REFERENCES Profissional(cpf_profissional),
-    id_procedimento INTEGER REFERENCES Procedimento(id_procedimento)
+CREATE TABLE Agendamento ( --tabela para armazenar informações sobre o agendamento
+    horario_agendamento TIMESTAMP NOT NULL, --representa data e hora do agendamento
+    cpf_cliente VARCHAR(11) REFERENCES Cliente(cpf_cliente), --chave estrangeira
+    cpf_profissional VARCHAR(11) REFERENCES Profissional(cpf_profissional), --chave estrangeira
+    id_procedimento INTEGER REFERENCES Procedimento(id_procedimento) --chave estrangeira
 );
 
 INSERT INTO Cliente VALUES ('11122233344', 'Ana', '123456789');
